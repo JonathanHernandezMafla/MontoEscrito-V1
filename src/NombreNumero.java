@@ -11,6 +11,9 @@ public class NombreNumero {
 			
 			Nom = this.num100(n);
 		}
+		else if (n>=100 && n<1000) {
+			Nom = this.num1000(n);
+		}
 		else {
 			Nom = "Número muy grande.";
 		}
@@ -22,11 +25,17 @@ public class NombreNumero {
 			
 			String r = "";
 			
-			if (n%10 == 0) {
+			if (n>20 && n<100 && n%10 == 0) {
 				r = "";
 			}
-			else {
+			else if (n>20 && n<100) {
 				r = " Y "+this.num20(n%10);				
+			}
+			else if (n>=100 && n<1000 && n%100 == 0) {
+				r = "";				
+			}
+			else {
+				r = " "+this.num100(n%100);
 			}
 			return r;
 		}
@@ -150,5 +159,53 @@ public class NombreNumero {
 			return r;
 			
 		}
-
+		
+		public String num1000 (int n) {
+			
+			String r = "";
+			
+			int m = n -(n%100);
+			
+			if (n == 100) {
+				r = "CIEN";
+			}
+			else {
+				
+				switch (m) {
+				
+				case 100: 
+					r = "CIENTO"+mult(n);
+					break;
+				case 200: 
+					r = "DOCIENTOS"+mult(n);
+					break;
+				case 300: 
+					r = "TRESCIENTOS"+mult(n);
+					break;
+				case 400: 
+					r = "CUATROCIENTOS"+mult(n);
+					break;
+				case 500: 
+					r = "QUINIENTOS"+mult(n);
+					break;
+				case 600: 
+					r = "SEICIENTOS"+mult(n);
+					break;
+				case 700: 
+					r = "SETECIENTOS"+mult(n);
+					break;
+				case 800: 
+					r = "OCHOCIENTOS"+mult(n);
+					break;
+				case 900: 
+					r = "NOVECIENTOS"+mult(n);
+					break;
+				default: break;
+				
+				}
+				
+			}
+			
+			return r;
+		}
 }

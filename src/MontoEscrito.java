@@ -7,8 +7,8 @@ public class MontoEscrito {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Por favor inserte el número a nombrar:");
-		
 		int a = sc.nextInt();
+		System.out.println("El nombre del número es: ");
 		System.out.println(Nn.Nombre(a));		
 		
 	}
