@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class NombreNumero {
 	
 	public String Nombre (int n) {
@@ -14,6 +16,9 @@ public class NombreNumero {
 		else if (n>=100 && n<1000) {
 			Nom = this.num1000(n);
 		}
+		else if (n>=1000 && n<10000){
+			Nom = this.num10000(n);
+		}
 		else {
 			Nom = "Número muy grande.";
 		}
@@ -21,12 +26,15 @@ public class NombreNumero {
 		return Nom;
 	}
 	
-		public String mult (int n) {
+	public String mult (int n) {
 			
 			String r = "";
 			
 			if (n>20 && n<100 && n%10 == 0) {
 				r = "";
+			}
+			else if (n>20 && n<100 && Math.round(n/10) == 2) {
+				r = this.num20(n%10);				
 			}
 			else if (n>20 && n<100) {
 				r = " Y "+this.num20(n%10);				
@@ -34,13 +42,20 @@ public class NombreNumero {
 			else if (n>=100 && n<1000 && n%100 == 0) {
 				r = "";				
 			}
-			else {
+			else if (n>=100 && n<1000) {
 				r = " "+this.num100(n%100);
 			}
+			else if (n>=1000 && n<10000 && n%1000 == 0) {
+				r = "";
+			}
+			else {
+				r = " "+this.num1000(n%1000);
+			}
+			
 			return r;
 		}
 	
-		public String num20 (int n) {
+	public String num20 (int n) {
 				
 			String r = "";
 			
@@ -120,7 +135,7 @@ public class NombreNumero {
 				
 		}
 		
-		public String num100 (int n) {
+	public String num100 (int n) {
 			
 			String r = "";
 			
@@ -160,7 +175,7 @@ public class NombreNumero {
 			
 		}
 		
-		public String num1000 (int n) {
+	public String num1000 (int n) {
 			
 			String r = "";
 			
@@ -204,6 +219,25 @@ public class NombreNumero {
 				
 				}
 				
+			}
+			
+			return r;
+		}
+
+	public String num10000 (int n) {
+			
+			String r = "";
+			
+			int m = Math.round(n/1000);
+			
+			if (n == 1000) {
+				r = "MIL";
+			}
+			else if (Math.round(n/1000) == 1) {
+				r = "MIL"+mult(n);
+			}
+			else {
+				r = Nombre(m) + " MIL"+mult(n);
 			}
 			
 			return r;
